@@ -33,6 +33,9 @@
                     <label for="post_image" class="input-group-text">Post image url:</label>
                     <input class="form-control" type="text" name="post_image" id="post_image" value="{{ old('post_image', $post->post_image)}}">
                 </div>
+                <div class="mb-3 input-group">
+                    <img src="" alt="Image preview" class="d-none img-fluid" id="image-preview">
+                </div>
 
                 <div class="mb-3 input-group">
                     <label for="content" class="input-group-text">Post content:</label>
@@ -51,4 +54,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('post_image').addEventListener('change', function(event){
+        const imageElement = document.getElementById('image-preview');
+        imageElement.setAttribute('src' , this.value);
+        imageElement.classList.remove('d-none');
+    });
+</script>
 @endsection
