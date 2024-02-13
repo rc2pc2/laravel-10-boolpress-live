@@ -37,7 +37,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.posts.create') }}">
                         Create new Post
+                    </a>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.posts.deleted.index') }}">
+                        Deleted posts
                     </a>
                 </li>
                     <li class="nav-item dropdown">
