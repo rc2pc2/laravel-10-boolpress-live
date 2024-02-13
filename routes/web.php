@@ -24,5 +24,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::get('/posts/deleted', [AdminPostController::class, 'deletedIndex'])->name('posts.deleted.index');
+        Route::get('/posts/deleted/{post}', [AdminPostController::class, 'deletedShow'])->name('posts.deleted.show');
+        Route::patch('/posts/deleted/{post}', [AdminPostController::class, 'deletedRestore'])->name('posts.deleted.restore');
+        Route::delete('/posts/deleted/{post}', [AdminPostController::class, 'deletedDestroy'])->name('posts.deleted.destroy');
         Route::resource('/posts', AdminPostController::class);
 });

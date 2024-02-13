@@ -84,4 +84,32 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
+
+    public function deletedIndex(){
+        $posts = Post::onlyTrashed()->get();
+        return view('admin.posts.deleted-index', compact('posts'));
+    }
+
+    public function deletedShow(string $id){
+        $post = Post::withTrashed()->where('id', $id)->first();
+        return view('admin.posts.deleted-show', compact('post'));
+    }
+
+    public function deletedRestore(string $id){
+        $post = Post::withTrashed()->where('id', $id)->first();
+        $post->restore();
+
+        return redirect()->route('admin.posts.show', $post);
+    }
+
+    public function deletedDestroy(string $id){
+        $post = Post::withTrashed()->where('id', $id)->first();
+        $post->forceDelete();
+
+        return redirect()->route('admin.posts.deleted.index');
+    }
+
+
+
+
 }
