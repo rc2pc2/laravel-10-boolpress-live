@@ -30,7 +30,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $pageTitle = 'Create new post';
+        $post = new Post();
+        return view('admin.posts.create', compact('post', 'pageTitle'));
     }
 
     /**

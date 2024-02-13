@@ -45,12 +45,12 @@
                                 </em>
                             </td>
                             <td>
-                                <a href="{{ route('admin.posts.show', $post) }}">
+                                <a href="{{ route('admin.posts.show', $post) }}" class="text-decoration-none">
                                     <button class="btn btn-sm btn-primary">
                                         View
                                     </button>
                                 </a>
-                                <a href="{{ route('admin.posts.edit', $post) }}">
+                                <a href="{{ route('admin.posts.edit', $post) }}" class="text-decoration-none">
                                     <button class="btn btn-sm btn-success">
                                         Edit
                                     </button>
