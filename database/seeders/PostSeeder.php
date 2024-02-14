@@ -2,191 +2,34 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
+use Faker\Generator as Faker;
 
 class PostSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Faker $faker): void
     {
-        $posts = array(
-            array(
-                'autore' => 1,
-                'titolo' => 'Titolo Post 11',
-                'contenuto' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa atque quidem totam doloremque necessitatibus excepturi! At est minima unde eligendi quod eaque non aliquam, maxime natus cupiditate deleniti fugit.
-Suscipit minima, quos voluptatum maxime illo nam sint perspiciatis explicabo asperiores nobis fugiat, maiores labore reprehenderit praesentium, a ut inventore. Laudantium possimus nihil similique exercitationem illo, nam ut sapiente hic.
-Numquam debitis quibusdam laboriosam impedit! Eos omnis ducimus amet tenetur a voluptatibus, tempore optio dolor fugiat voluptate fuga nam voluptatem possimus sunt iste nostrum ipsa pariatur dolore. Deserunt, expedita doloribus!
-Aliquam cum ea voluptates voluptate quia, ipsam aperiam delectus sint corporis itaque recusandae blanditiis? Reprehenderit omnis quos eius aliquam fugiat illo, error voluptatum laboriosam, commodi enim doloribus nemo quaerat sapiente.
-Ratione adipisci similique quaerat sed impedit repellat consequuntur fugiat aspernatur qui cupiditate vitae illum amet ducimus voluptatum repudiandae quos, et nemo perferendis! Praesentium tempora quidem doloribus voluptates ab alias sed.
-Distinctio, veniam! Reprehenderit alias illum neque suscipit nisi earum consequatur cumque adipisci ipsum? A eos odio nulla sint perspiciatis aliquam explicabo mollitia commodi fugit dicta blanditiis, corporis atque ut neque.
-Ea voluptates saepe amet molestiae, totam magnam nisi inventore pariatur, repellendus cumque odio maiores nostrum porro hic quos reprehenderit veniam minima voluptas officia molestias veritatis eum quam! Deleniti, dicta in.
-Numquam aperiam culpa consequuntur exercitationem quaerat molestiae hic harum similique beatae voluptatum, pariatur tempore ex corporis, fugit fugiat aspernatur a officiis delectus laborum quam ad, sequi cupiditate reprehenderit. Accusantium, dolor.
-Tenetur possimus officia incidunt iusto ut odit reiciendis accusamus ea reprehenderit sapiente, provident quod omnis debitis, repellendus quas exercitationem minus nihil ratione eaque, error cum. Nisi possimus culpa cum minima.
-Incidunt accusamus recusandae nemo consequatur neque repellendus, veritatis architecto necessitatibus quasi, eaque hic commodi at doloribus non adipisci molestiae repudiandae. Harum a magni vitae placeat aperiam quam illum nostrum dolorum. numero 0',
-                'immagine' => 'https://picsum.photos/id/123/200/300',
-                'data' => '2023-07-12'
-            ),
-            array(
-                'autore' => 2,
-                'titolo' => 'Titolo Post 2',
-                'contenuto' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa atque quidem totam doloremque necessitatibus excepturi! At est minima unde eligendi quod eaque non aliquam, maxime natus cupiditate deleniti fugit.
-Suscipit minima, quos voluptatum maxime illo nam sint perspiciatis explicabo asperiores nobis fugiat, maiores labore reprehenderit praesentium, a ut inventore. Laudantium possimus nihil similique exercitationem illo, nam ut sapiente hic.
-Numquam debitis quibusdam laboriosam impedit! Eos omnis ducimus amet tenetur a voluptatibus, tempore optio dolor fugiat voluptate fuga nam voluptatem possimus sunt iste nostrum ipsa pariatur dolore. Deserunt, expedita doloribus!
-Aliquam cum ea voluptates voluptate quia, ipsam aperiam delectus sint corporis itaque recusandae blanditiis? Reprehenderit omnis quos eius aliquam fugiat illo, error voluptatum laboriosam, commodi enim doloribus nemo quaerat sapiente.
-Ratione adipisci similique quaerat sed impedit repellat consequuntur fugiat aspernatur qui cupiditate vitae illum amet ducimus voluptatum repudiandae quos, et nemo perferendis! Praesentium tempora quidem doloribus voluptates ab alias sed.
-Distinctio, veniam! Reprehenderit alias illum neque suscipit nisi earum consequatur cumque adipisci ipsum? A eos odio nulla sint perspiciatis aliquam explicabo mollitia commodi fugit dicta blanditiis, corporis atque ut neque.
-Ea voluptates saepe amet molestiae, totam magnam nisi inventore pariatur, repellendus cumque odio maiores nostrum porro hic quos reprehenderit veniam minima voluptas officia molestias veritatis eum quam! Deleniti, dicta in.
-Numquam aperiam culpa consequuntur exercitationem quaerat molestiae hic harum similique beatae voluptatum, pariatur tempore ex corporis, fugit fugiat aspernatur a officiis delectus laborum quam ad, sequi cupiditate reprehenderit. Accusantium, dolor.
-Tenetur possimus officia incidunt iusto ut odit reiciendis accusamus ea reprehenderit sapiente, provident quod omnis debitis, repellendus quas exercitationem minus nihil ratione eaque, error cum. Nisi possimus culpa cum minima.
-Incidunt accusamus recusandae nemo consequatur neque repellendus, veritatis architecto necessitatibus quasi, eaque hic commodi at doloribus non adipisci molestiae repudiandae. Harum a magni vitae placeat aperiam quam illum nostrum dolorum. numero 1',
-                'immagine' => 'https://picsum.photos/id/456/200/300',
-                'data' => '2023-05-28'
-            ),
-            array(
-                'autore' => 2,
-                'titolo' => 'Titolo Post 3',
-                'contenuto' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa atque quidem totam doloremque necessitatibus excepturi! At est minima unde eligendi quod eaque non aliquam, maxime natus cupiditate deleniti fugit.
-Suscipit minima, quos voluptatum maxime illo nam sint perspiciatis explicabo asperiores nobis fugiat, maiores labore reprehenderit praesentium, a ut inventore. Laudantium possimus nihil similique exercitationem illo, nam ut sapiente hic.
-Numquam debitis quibusdam laboriosam impedit! Eos omnis ducimus amet tenetur a voluptatibus, tempore optio dolor fugiat voluptate fuga nam voluptatem possimus sunt iste nostrum ipsa pariatur dolore. Deserunt, expedita doloribus!
-Aliquam cum ea voluptates voluptate quia, ipsam aperiam delectus sint corporis itaque recusandae blanditiis? Reprehenderit omnis quos eius aliquam fugiat illo, error voluptatum laboriosam, commodi enim doloribus nemo quaerat sapiente.
-Ratione adipisci similique quaerat sed impedit repellat consequuntur fugiat aspernatur qui cupiditate vitae illum amet ducimus voluptatum repudiandae quos, et nemo perferendis! Praesentium tempora quidem doloribus voluptates ab alias sed.
-Distinctio, veniam! Reprehenderit alias illum neque suscipit nisi earum consequatur cumque adipisci ipsum? A eos odio nulla sint perspiciatis aliquam explicabo mollitia commodi fugit dicta blanditiis, corporis atque ut neque.
-Ea voluptates saepe amet molestiae, totam magnam nisi inventore pariatur, repellendus cumque odio maiores nostrum porro hic quos reprehenderit veniam minima voluptas officia molestias veritatis eum quam! Deleniti, dicta in.
-Numquam aperiam culpa consequuntur exercitationem quaerat molestiae hic harum similique beatae voluptatum, pariatur tempore ex corporis, fugit fugiat aspernatur a officiis delectus laborum quam ad, sequi cupiditate reprehenderit. Accusantium, dolor.
-Tenetur possimus officia incidunt iusto ut odit reiciendis accusamus ea reprehenderit sapiente, provident quod omnis debitis, repellendus quas exercitationem minus nihil ratione eaque, error cum. Nisi possimus culpa cum minima.
-Incidunt accusamus recusandae nemo consequatur neque repellendus, veritatis architecto necessitatibus quasi, eaque hic commodi at doloribus non adipisci molestiae repudiandae. Harum a magni vitae placeat aperiam quam illum nostrum dolorum. numero 2',
-                'immagine' => 'https://picsum.photos/id/789/200/300',
-                'data' => '2022-11-15'
-            ),
-            array(
-                'autore' => 1,
-                'titolo' => 'Titolo Post 4',
-                'contenuto' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa atque quidem totam doloremque necessitatibus excepturi! At est minima unde eligendi quod eaque non aliquam, maxime natus cupiditate deleniti fugit.
-Suscipit minima, quos voluptatum maxime illo nam sint perspiciatis explicabo asperiores nobis fugiat, maiores labore reprehenderit praesentium, a ut inventore. Laudantium possimus nihil similique exercitationem illo, nam ut sapiente hic.
-Numquam debitis quibusdam laboriosam impedit! Eos omnis ducimus amet tenetur a voluptatibus, tempore optio dolor fugiat voluptate fuga nam voluptatem possimus sunt iste nostrum ipsa pariatur dolore. Deserunt, expedita doloribus!
-Aliquam cum ea voluptates voluptate quia, ipsam aperiam delectus sint corporis itaque recusandae blanditiis? Reprehenderit omnis quos eius aliquam fugiat illo, error voluptatum laboriosam, commodi enim doloribus nemo quaerat sapiente.
-Ratione adipisci similique quaerat sed impedit repellat consequuntur fugiat aspernatur qui cupiditate vitae illum amet ducimus voluptatum repudiandae quos, et nemo perferendis! Praesentium tempora quidem doloribus voluptates ab alias sed.
-Distinctio, veniam! Reprehenderit alias illum neque suscipit nisi earum consequatur cumque adipisci ipsum? A eos odio nulla sint perspiciatis aliquam explicabo mollitia commodi fugit dicta blanditiis, corporis atque ut neque.
-Ea voluptates saepe amet molestiae, totam magnam nisi inventore pariatur, repellendus cumque odio maiores nostrum porro hic quos reprehenderit veniam minima voluptas officia molestias veritatis eum quam! Deleniti, dicta in.
-Numquam aperiam culpa consequuntur exercitationem quaerat molestiae hic harum similique beatae voluptatum, pariatur tempore ex corporis, fugit fugiat aspernatur a officiis delectus laborum quam ad, sequi cupiditate reprehenderit. Accusantium, dolor.
-Tenetur possimus officia incidunt iusto ut odit reiciendis accusamus ea reprehenderit sapiente, provident quod omnis debitis, repellendus quas exercitationem minus nihil ratione eaque, error cum. Nisi possimus culpa cum minima.
-Incidunt accusamus recusandae nemo consequatur neque repellendus, veritatis architecto necessitatibus quasi, eaque hic commodi at doloribus non adipisci molestiae repudiandae. Harum a magni vitae placeat aperiam quam illum nostrum dolorum. numero 3',
-                'immagine' => 'https://picsum.photos/id/101/200/300',
-                'data' => '2024-01-05'
-            ),
-            array(
-                'autore' => 3,
-                'titolo' => 'Titolo Post 5',
-                'contenuto' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa atque quidem totam doloremque necessitatibus excepturi! At est minima unde eligendi quod eaque non aliquam, maxime natus cupiditate deleniti fugit.
-Suscipit minima, quos voluptatum maxime illo nam sint perspiciatis explicabo asperiores nobis fugiat, maiores labore reprehenderit praesentium, a ut inventore. Laudantium possimus nihil similique exercitationem illo, nam ut sapiente hic.
-Numquam debitis quibusdam laboriosam impedit! Eos omnis ducimus amet tenetur a voluptatibus, tempore optio dolor fugiat voluptate fuga nam voluptatem possimus sunt iste nostrum ipsa pariatur dolore. Deserunt, expedita doloribus!
-Aliquam cum ea voluptates voluptate quia, ipsam aperiam delectus sint corporis itaque recusandae blanditiis? Reprehenderit omnis quos eius aliquam fugiat illo, error voluptatum laboriosam, commodi enim doloribus nemo quaerat sapiente.
-Ratione adipisci similique quaerat sed impedit repellat consequuntur fugiat aspernatur qui cupiditate vitae illum amet ducimus voluptatum repudiandae quos, et nemo perferendis! Praesentium tempora quidem doloribus voluptates ab alias sed.
-Distinctio, veniam! Reprehenderit alias illum neque suscipit nisi earum consequatur cumque adipisci ipsum? A eos odio nulla sint perspiciatis aliquam explicabo mollitia commodi fugit dicta blanditiis, corporis atque ut neque.
-Ea voluptates saepe amet molestiae, totam magnam nisi inventore pariatur, repellendus cumque odio maiores nostrum porro hic quos reprehenderit veniam minima voluptas officia molestias veritatis eum quam! Deleniti, dicta in.
-Numquam aperiam culpa consequuntur exercitationem quaerat molestiae hic harum similique beatae voluptatum, pariatur tempore ex corporis, fugit fugiat aspernatur a officiis delectus laborum quam ad, sequi cupiditate reprehenderit. Accusantium, dolor.
-Tenetur possimus officia incidunt iusto ut odit reiciendis accusamus ea reprehenderit sapiente, provident quod omnis debitis, repellendus quas exercitationem minus nihil ratione eaque, error cum. Nisi possimus culpa cum minima.
-Incidunt accusamus recusandae nemo consequatur neque repellendus, veritatis architecto necessitatibus quasi, eaque hic commodi at doloribus non adipisci molestiae repudiandae. Harum a magni vitae placeat aperiam quam illum nostrum dolorum. numero 4',
-                'immagine' => 'https://picsum.photos/id/202/200/300',
-                'data' => '2022-09-20'
-            ),
-            array(
-                'autore' => 4,
-                'titolo' => 'Titolo Post 1',
-                'contenuto' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa atque quidem totam doloremque necessitatibus excepturi! At est minima unde eligendi quod eaque non aliquam, maxime natus cupiditate deleniti fugit.
-Suscipit minima, quos voluptatum maxime illo nam sint perspiciatis explicabo asperiores nobis fugiat, maiores labore reprehenderit praesentium, a ut inventore. Laudantium possimus nihil similique exercitationem illo, nam ut sapiente hic.
-Numquam debitis quibusdam laboriosam impedit! Eos omnis ducimus amet tenetur a voluptatibus, tempore optio dolor fugiat voluptate fuga nam voluptatem possimus sunt iste nostrum ipsa pariatur dolore. Deserunt, expedita doloribus!
-Aliquam cum ea voluptates voluptate quia, ipsam aperiam delectus sint corporis itaque recusandae blanditiis? Reprehenderit omnis quos eius aliquam fugiat illo, error voluptatum laboriosam, commodi enim doloribus nemo quaerat sapiente.
-Ratione adipisci similique quaerat sed impedit repellat consequuntur fugiat aspernatur qui cupiditate vitae illum amet ducimus voluptatum repudiandae quos, et nemo perferendis! Praesentium tempora quidem doloribus voluptates ab alias sed.
-Distinctio, veniam! Reprehenderit alias illum neque suscipit nisi earum consequatur cumque adipisci ipsum? A eos odio nulla sint perspiciatis aliquam explicabo mollitia commodi fugit dicta blanditiis, corporis atque ut neque.
-Ea voluptates saepe amet molestiae, totam magnam nisi inventore pariatur, repellendus cumque odio maiores nostrum porro hic quos reprehenderit veniam minima voluptas officia molestias veritatis eum quam! Deleniti, dicta in.
-Numquam aperiam culpa consequuntur exercitationem quaerat molestiae hic harum similique beatae voluptatum, pariatur tempore ex corporis, fugit fugiat aspernatur a officiis delectus laborum quam ad, sequi cupiditate reprehenderit. Accusantium, dolor.
-Tenetur possimus officia incidunt iusto ut odit reiciendis accusamus ea reprehenderit sapiente, provident quod omnis debitis, repellendus quas exercitationem minus nihil ratione eaque, error cum. Nisi possimus culpa cum minima.
-Incidunt accusamus recusandae nemo consequatur neque repellendus, veritatis architecto necessitatibus quasi, eaque hic commodi at doloribus non adipisci molestiae repudiandae. Harum a magni vitae placeat aperiam quam illum nostrum dolorum. numero 0',
-                'immagine' => 'https://picsum.photos/id/123/200/300',
-                'data' => '2023-07-12'
-            ),
-            array(
-                'autore' => 2,
-                'titolo' => 'Titolo Post 2',
-                'contenuto' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa atque quidem totam doloremque necessitatibus excepturi! At est minima unde eligendi quod eaque non aliquam, maxime natus cupiditate deleniti fugit.
-Suscipit minima, quos voluptatum maxime illo nam sint perspiciatis explicabo asperiores nobis fugiat, maiores labore reprehenderit praesentium, a ut inventore. Laudantium possimus nihil similique exercitationem illo, nam ut sapiente hic.
-Numquam debitis quibusdam laboriosam impedit! Eos omnis ducimus amet tenetur a voluptatibus, tempore optio dolor fugiat voluptate fuga nam voluptatem possimus sunt iste nostrum ipsa pariatur dolore. Deserunt, expedita doloribus!
-Aliquam cum ea voluptates voluptate quia, ipsam aperiam delectus sint corporis itaque recusandae blanditiis? Reprehenderit omnis quos eius aliquam fugiat illo, error voluptatum laboriosam, commodi enim doloribus nemo quaerat sapiente.
-Ratione adipisci similique quaerat sed impedit repellat consequuntur fugiat aspernatur qui cupiditate vitae illum amet ducimus voluptatum repudiandae quos, et nemo perferendis! Praesentium tempora quidem doloribus voluptates ab alias sed.
-Distinctio, veniam! Reprehenderit alias illum neque suscipit nisi earum consequatur cumque adipisci ipsum? A eos odio nulla sint perspiciatis aliquam explicabo mollitia commodi fugit dicta blanditiis, corporis atque ut neque.
-Ea voluptates saepe amet molestiae, totam magnam nisi inventore pariatur, repellendus cumque odio maiores nostrum porro hic quos reprehenderit veniam minima voluptas officia molestias veritatis eum quam! Deleniti, dicta in.
-Numquam aperiam culpa consequuntur exercitationem quaerat molestiae hic harum similique beatae voluptatum, pariatur tempore ex corporis, fugit fugiat aspernatur a officiis delectus laborum quam ad, sequi cupiditate reprehenderit. Accusantium, dolor.
-Tenetur possimus officia incidunt iusto ut odit reiciendis accusamus ea reprehenderit sapiente, provident quod omnis debitis, repellendus quas exercitationem minus nihil ratione eaque, error cum. Nisi possimus culpa cum minima.
-Incidunt accusamus recusandae nemo consequatur neque repellendus, veritatis architecto necessitatibus quasi, eaque hic commodi at doloribus non adipisci molestiae repudiandae. Harum a magni vitae placeat aperiam quam illum nostrum dolorum. numero 1',
-                'immagine' => 'https://picsum.photos/id/456/200/300',
-                'data' => '2023-05-28'
-            ),
-            array(
-                'autore' => 3,
-                'titolo' => 'Titolo Post 3',
-                'contenuto' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa atque quidem totam doloremque necessitatibus excepturi! At est minima unde eligendi quod eaque non aliquam, maxime natus cupiditate deleniti fugit.
-Suscipit minima, quos voluptatum maxime illo nam sint perspiciatis explicabo asperiores nobis fugiat, maiores labore reprehenderit praesentium, a ut inventore. Laudantium possimus nihil similique exercitationem illo, nam ut sapiente hic.
-Numquam debitis quibusdam laboriosam impedit! Eos omnis ducimus amet tenetur a voluptatibus, tempore optio dolor fugiat voluptate fuga nam voluptatem possimus sunt iste nostrum ipsa pariatur dolore. Deserunt, expedita doloribus!
-Aliquam cum ea voluptates voluptate quia, ipsam aperiam delectus sint corporis itaque recusandae blanditiis? Reprehenderit omnis quos eius aliquam fugiat illo, error voluptatum laboriosam, commodi enim doloribus nemo quaerat sapiente.
-Ratione adipisci similique quaerat sed impedit repellat consequuntur fugiat aspernatur qui cupiditate vitae illum amet ducimus voluptatum repudiandae quos, et nemo perferendis! Praesentium tempora quidem doloribus voluptates ab alias sed.
-Distinctio, veniam! Reprehenderit alias illum neque suscipit nisi earum consequatur cumque adipisci ipsum? A eos odio nulla sint perspiciatis aliquam explicabo mollitia commodi fugit dicta blanditiis, corporis atque ut neque.
-Ea voluptates saepe amet molestiae, totam magnam nisi inventore pariatur, repellendus cumque odio maiores nostrum porro hic quos reprehenderit veniam minima voluptas officia molestias veritatis eum quam! Deleniti, dicta in.
-Numquam aperiam culpa consequuntur exercitationem quaerat molestiae hic harum similique beatae voluptatum, pariatur tempore ex corporis, fugit fugiat aspernatur a officiis delectus laborum quam ad, sequi cupiditate reprehenderit. Accusantium, dolor.
-Tenetur possimus officia incidunt iusto ut odit reiciendis accusamus ea reprehenderit sapiente, provident quod omnis debitis, repellendus quas exercitationem minus nihil ratione eaque, error cum. Nisi possimus culpa cum minima.
-Incidunt accusamus recusandae nemo consequatur neque repellendus, veritatis architecto necessitatibus quasi, eaque hic commodi at doloribus non adipisci molestiae repudiandae. Harum a magni vitae placeat aperiam quam illum nostrum dolorum. numero 2',
-                'immagine' => 'https://picsum.photos/id/789/200/300',
-                'data' => '2022-11-15'
-            ),
-            array(
-                'autore' => 2,
-                'titolo' => 'Titolo Post 4',
-                'contenuto' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa atque quidem totam doloremque necessitatibus excepturi! At est minima unde eligendi quod eaque non aliquam, maxime natus cupiditate deleniti fugit.
-Suscipit minima, quos voluptatum maxime illo nam sint perspiciatis explicabo asperiores nobis fugiat, maiores labore reprehenderit praesentium, a ut inventore. Laudantium possimus nihil similique exercitationem illo, nam ut sapiente hic.
-Numquam debitis quibusdam laboriosam impedit! Eos omnis ducimus amet tenetur a voluptatibus, tempore optio dolor fugiat voluptate fuga nam voluptatem possimus sunt iste nostrum ipsa pariatur dolore. Deserunt, expedita doloribus!
-Aliquam cum ea voluptates voluptate quia, ipsam aperiam delectus sint corporis itaque recusandae blanditiis? Reprehenderit omnis quos eius aliquam fugiat illo, error voluptatum laboriosam, commodi enim doloribus nemo quaerat sapiente.
-Ratione adipisci similique quaerat sed impedit repellat consequuntur fugiat aspernatur qui cupiditate vitae illum amet ducimus voluptatum repudiandae quos, et nemo perferendis! Praesentium tempora quidem doloribus voluptates ab alias sed.
-Distinctio, veniam! Reprehenderit alias illum neque suscipit nisi earum consequatur cumque adipisci ipsum? A eos odio nulla sint perspiciatis aliquam explicabo mollitia commodi fugit dicta blanditiis, corporis atque ut neque.
-Ea voluptates saepe amet molestiae, totam magnam nisi inventore pariatur, repellendus cumque odio maiores nostrum porro hic quos reprehenderit veniam minima voluptas officia molestias veritatis eum quam! Deleniti, dicta in.
-Numquam aperiam culpa consequuntur exercitationem quaerat molestiae hic harum similique beatae voluptatum, pariatur tempore ex corporis, fugit fugiat aspernatur a officiis delectus laborum quam ad, sequi cupiditate reprehenderit. Accusantium, dolor.
-Tenetur possimus officia incidunt iusto ut odit reiciendis accusamus ea reprehenderit sapiente, provident quod omnis debitis, repellendus quas exercitationem minus nihil ratione eaque, error cum. Nisi possimus culpa cum minima.
-Incidunt accusamus recusandae nemo consequatur neque repellendus, veritatis architecto necessitatibus quasi, eaque hic commodi at doloribus non adipisci molestiae repudiandae. Harum a magni vitae placeat aperiam quam illum nostrum dolorum. numero 3',
-                'immagine' => 'https://picsum.photos/id/101/200/300',
-                'data' => '2024-01-05'
-            ),
-            array(
-                'autore' => 2,
-                'titolo' => 'Titolo Post 5',
-                'contenuto' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa atque quidem totam doloremque necessitatibus excepturi! At est minima unde eligendi quod eaque non aliquam, maxime natus cupiditate deleniti fugit.
-Suscipit minima, quos voluptatum maxime illo nam sint perspiciatis explicabo asperiores nobis fugiat, maiores labore reprehenderit praesentium, a ut inventore. Laudantium possimus nihil similique exercitationem illo, nam ut sapiente hic.
-Numquam debitis quibusdam laboriosam impedit! Eos omnis ducimus amet tenetur a voluptatibus, tempore optio dolor fugiat voluptate fuga nam voluptatem possimus sunt iste nostrum ipsa pariatur dolore. Deserunt, expedita doloribus!
-Aliquam cum ea voluptates voluptate quia, ipsam aperiam delectus sint corporis itaque recusandae blanditiis? Reprehenderit omnis quos eius aliquam fugiat illo, error voluptatum laboriosam, commodi enim doloribus nemo quaerat sapiente.
-Ratione adipisci similique quaerat sed impedit repellat consequuntur fugiat aspernatur qui cupiditate vitae illum amet ducimus voluptatum repudiandae quos, et nemo perferendis! Praesentium tempora quidem doloribus voluptates ab alias sed.
-Distinctio, veniam! Reprehenderit alias illum neque suscipit nisi earum consequatur cumque adipisci ipsum? A eos odio nulla sint perspiciatis aliquam explicabo mollitia commodi fugit dicta blanditiis, corporis atque ut neque.
-Ea voluptates saepe amet molestiae, totam magnam nisi inventore pariatur, repellendus cumque odio maiores nostrum porro hic quos reprehenderit veniam minima voluptas officia molestias veritatis eum quam! Deleniti, dicta in.
-Numquam aperiam culpa consequuntur exercitationem quaerat molestiae hic harum similique beatae voluptatum, pariatur tempore ex corporis, fugit fugiat aspernatur a officiis delectus laborum quam ad, sequi cupiditate reprehenderit. Accusantium, dolor.
-Tenetur possimus officia incidunt iusto ut odit reiciendis accusamus ea reprehenderit sapiente, provident quod omnis debitis, repellendus quas exercitationem minus nihil ratione eaque, error cum. Nisi possimus culpa cum minima.
-Incidunt accusamus recusandae nemo consequatur neque repellendus, veritatis architecto necessitatibus quasi, eaque hic commodi at doloribus non adipisci molestiae repudiandae. Harum a magni vitae placeat aperiam quam illum nostrum dolorum. numero 4',
-                'immagine' => 'https://picsum.photos/id/202/200/300',
-                'data' => '2022-09-20'
-            ),
-        );
 
-        foreach ($posts as $post) {
+        $categoryIds = Category::all()->pluck('id');
+        $userIds = User::all()->pluck('id');
+
+        for ($i=0; $i <  250; $i++) {
             $newPost = new Post();
-            $newPost->title = $post['titolo'];
-            $newPost->user_id = $post['autore'];
-            $newPost->post_image = $post['immagine'];
-            $newPost->content = $post['contenuto'];
-            $newPost->date = $post['data'];
+            $newPost->title = $faker->unique()->realTextBetween(9, 25);
+            $newPost->user_id = $faker->randomElement($userIds);
+            $newPost->category_id =  $faker->randomElement($categoryIds);
+            $newPost->post_image = $faker->unique()->imageUrl(300, 500);
+            $newPost->content = $faker->unique()->paragraphs(5, true);
+            $newPost->date = $faker->date();
             $newPost->save();
         }
-
-
-        //
     }
 }

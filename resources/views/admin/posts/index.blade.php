@@ -17,6 +17,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Title</th>
                         <th scope="col">Author</th>
+                        <th scope="col">Category</th>
                         <th scope="col">Date</th>
                         <th scope="col">Content</th>
                         <th scope="col">Actions</th>
@@ -35,6 +36,18 @@
                             </td>
                             <td>
                                 {{ $post->user->name }}
+                            </td>
+                            <td>
+                                <span  style="color: {{ $post->category->color }}">
+                                    ⬤
+                                </span>
+                                <span>
+                                    {{ $post->category->name }}
+                                </span>
+                                <span>
+                                    <img src="{{ $post->category->categoryDetail->image }}" alt="" style="width:
+                                    20px" class="rounded-5">
+                                </span>
                             </td>
                             <td>
                                 {{ $post->date }}
