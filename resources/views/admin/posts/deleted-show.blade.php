@@ -18,7 +18,7 @@
             <img src="{{ $post->post_image }}" alt="">
 
             <p>
-                {{ $post->author }}
+                {{ $post->user_id }}
             </p>
             <p>
                 {{ $post->date }}

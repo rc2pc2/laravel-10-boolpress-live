@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     private $rules = [
         'title' => ['required', 'min:3', 'string', 'max:255'],
-        'author' => ['required', 'min:3', 'string', 'max:40'],
         'post_image' => ['url:https', 'required'],
         'content' => ['min:20', 'required'],
         'date' => ['date', 'required'],
@@ -42,6 +42,7 @@ class PostController extends Controller
     {
         // dd($request->all());
         $data = $request->validate($this->rules);
+        $data['user_id'] = Auth::id();
 
 
         $post = Post::create($data);
@@ -71,6 +72,10 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $data = $request->validate($this->rules);
+        // $post->user_id = Auth::id();
+        $data['user_id'] = Auth::id();
+
+
         $post->update($data);
 
         return redirect()->route('admin.posts.show', $post);

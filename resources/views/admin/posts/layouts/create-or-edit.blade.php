@@ -20,11 +20,6 @@
                 </div>
 
                 <div class="mb-3 input-group">
-                    <label for="author" class="input-group-text">Author:</label>
-                    <input class="form-control" type="text" name="author" id="author" value="{{ old('author', $post->author)}}">
-                </div>
-
-                <div class="mb-3 input-group">
                     <label for="date" class="input-group-text">Date:</label>
                     <input class="form-control" type="date" name="date" id="date" value="{{ old('date', $post->date)}}">
                 </div>

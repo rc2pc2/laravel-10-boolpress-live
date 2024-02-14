@@ -34,7 +34,7 @@
                                 </a>
                             </td>
                             <td>
-                                {{ $post->author }}
+                                {{ $post->user_id }}
                             </td>
                             <td>
                                 {{ $post->date }}
