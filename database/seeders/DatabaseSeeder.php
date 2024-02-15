@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             UserDetailSeeder::class,
             CategorySeeder::class,
+            CategoryDetailSeeder::class,
             PostSeeder::class,
+            TagSeeder::class,
+            PostTagSeeder::class,
         ]);
     }
 }

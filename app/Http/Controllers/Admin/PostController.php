@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,7 @@ class PostController extends Controller
     private $rules = [
         'title' => ['required', 'min:3', 'string', 'max:255'],
         'category_id' => ['exists:categories,id'],
+        'tags' => ['exists:tags,id'],
         'post_image' => ['url:https', 'required'],
         'content' => ['min:20', 'required'],
         'date' => ['date', 'required'],
@@ -36,7 +38,8 @@ class PostController extends Controller
         $pageTitle = 'Create new post';
         $post = new Post();
         $categories = Category::all();
-        return view('admin.posts.create', compact('post', 'pageTitle', 'categories'));
+        $tags = Tag::all();
+        return view('admin.posts.create', compact('post', 'pageTitle', 'categories', 'tags'));
     }
 
     /**
@@ -44,12 +47,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        // dd($request->all()['tags']);
         $data = $request->validate($this->rules);
         $data['user_id'] = Auth::id();
-
-
         $post = Post::create($data);
+
+        $post->tags()->sync($data['tags']);
 
         return redirect()->route('admin.posts.show', $post);
     }
@@ -68,7 +71,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -114,6 +118,7 @@ class PostController extends Controller
 
     public function deletedDestroy(string $id){
         $post = Post::withTrashed()->where('id', $id)->first();
+        $post->tags()->detach(); // ? rimuovi tutti i collegamenti con me
         $post->forceDelete();
 
         return redirect()->route('admin.posts.deleted.index');
