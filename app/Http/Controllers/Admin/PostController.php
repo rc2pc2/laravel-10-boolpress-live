@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ class PostController extends Controller
 {
     private $rules = [
         'title' => ['required', 'min:3', 'string', 'max:255'],
+        'category_id' => ['exists:categories,id'],
         'post_image' => ['url:https', 'required'],
         'content' => ['min:20', 'required'],
         'date' => ['date', 'required'],
@@ -33,7 +35,8 @@ class PostController extends Controller
     {
         $pageTitle = 'Create new post';
         $post = new Post();
-        return view('admin.posts.create', compact('post', 'pageTitle'));
+        $categories = Category::all();
+        return view('admin.posts.create', compact('post', 'pageTitle', 'categories'));
     }
 
     /**
@@ -64,7 +67,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**

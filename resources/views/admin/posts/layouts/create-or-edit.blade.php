@@ -20,6 +20,17 @@
                 </div>
 
                 <div class="mb-3 input-group">
+                    <label for="category_id" class="input-group-text">Category:</label>
+                    <select class="form-select" type="text" name="category_id" id="category_id" >
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}"  style="color: {{ $category->color }}"
+                                {{ $category->id == old('category_id', $post->category_id) ? 'selected' : '' }}>{{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-3 input-group">
                     <label for="date" class="input-group-text">Date:</label>
                     <input class="form-control" type="date" name="date" id="date" value="{{ old('date', $post->date)}}">
                 </div>

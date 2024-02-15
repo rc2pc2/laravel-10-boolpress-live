@@ -12,7 +12,7 @@
         </div>
         <div class="col-12">
             <h2 scope="row">
-                {{ $post->id }}
+                {{ $post->id }} -- Category: {{ $post->category->name }}
             </h2>
 
             <img src="{{ $post->post_image }}" alt="">
