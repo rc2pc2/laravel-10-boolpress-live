@@ -23,8 +23,10 @@
                     <label for="category_id" class="input-group-text">Category:</label>
                     <select class="form-select" type="text" name="category_id" id="category_id" >
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}"  style="color: {{ $category->color }}"
-                                {{ $category->id == old('category_id', $post->category_id) ? 'selected' : '' }}>{{ $category->name }}
+                            <option value="{{ $category->id }}"
+                                style="color: {{ $category->color }}"
+                                {{ $category->id == old('category_id', $post->category_id) ? 'selected' : '' }}>
+                                    {{ $category->name }}
                             </option>
                         @endforeach
                     </select>

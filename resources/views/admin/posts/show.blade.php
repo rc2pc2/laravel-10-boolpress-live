@@ -4,16 +4,16 @@
 
 @section('main-content')
 <div class="container">
-    <div class="row">
-        <div class="col-12">
+    <div class="row justify-content-center">
+        <div class="col-7 text-center text-uppercase">
             <h2>
                 {{ $post->title }}
             </h2>
         </div>
-        <div class="col-12">
-            <h2 scope="row">
+        <div class="col-7 text-center">
+            <h4 scope="row  justify-content-center">
                 {{ $post->id }} -- Category: {{ $post->category->name }}
-            </h2>
+            </h4>
 
             <img src="{{ $post->post_image }}" alt="">
 
@@ -25,19 +25,18 @@
             <p>
                 {{ $post->date }}
             </p>
-            <div class="p-5">
+            <div class="p-5 text-start">
                 <p>
                     <em>
                         {{ $post->content}}
                     </em>
                 </p>
             </div>
-            <button class="btn btn-sm btn-success">
-                Edit
-            </button>
-            <button class="btn btn-sm btn-warning">
-                Delete
-            </button>
+            <a href="{{ route('admin.posts.edit', $post) }}" class="text-decoration-none">
+                <button class="btn btn-sm btn-success">
+                    Edit
+                </button>
+            </a>
         </div>
 
         <div class="col-6 pt-5">
