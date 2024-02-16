@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\RoleController as AdminRoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,5 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
         Route::patch('/posts/deleted/{post}', [AdminPostController::class, 'deletedRestore'])->name('posts.deleted.restore');
         Route::delete('/posts/deleted/{post}', [AdminPostController::class, 'deletedDestroy'])->name('posts.deleted.destroy');
         Route::resource('/posts', AdminPostController::class);
+        Route::resource('/roles', AdminRoleController::class);
 });
