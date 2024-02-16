@@ -16,8 +16,23 @@
 
         <div class="col-7 text-center">
             <h4 scope="row  justify-content-center">
-                {{ $role->id }} -- Level: {{ $role->level }}
+                ID : {{ $role->id }} -- Level: {{ $role->level }}
             </h4>
+
+            <h5 class="text-start">
+                Users with this role:
+            </h5>
+                <ul class="text-start">
+                    @forelse ( $role->users as $user )
+                        <li>
+                            {{ $user->name }}
+                        </li>
+                    @empty
+                        <li>
+                            There are no users with this role yet...
+                        </li>
+                    @endforelse
+                </ul>
 
             <a href="{{ route('admin.roles.edit', $role) }}" class="text-decoration-none">
                 <button class="btn btn-sm btn-success">

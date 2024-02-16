@@ -36,8 +36,7 @@
                                 {{ $role->level }}
                             </td>
                             <td>
-                                {{-- {{  }} --}}
-                                n
+                               {{ count($role->users) }}
                             </td>
                             <td>
                                 <a href="{{ route('admin.roles.show', $role) }}" class="text-decoration-none">
