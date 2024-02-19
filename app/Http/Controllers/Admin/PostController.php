@@ -63,7 +63,7 @@ class PostController extends Controller
         $post->tags()->sync($data['tags']);
 
 
-        return redirect()->route('admin.posts.show', $post);
+        return redirect()->route('admin.posts.show', $post)->with('message', $post->title . ' has been created succesfully!')->with('alert-class', 'success');;
     }
 
     /**
@@ -103,7 +103,7 @@ class PostController extends Controller
 
         $post->update($data);
 
-        return redirect()->route('admin.posts.show', $post)->with('message', $post->title . ' has been updated succesfully!')->with('alert-class', 'success');;
+        return redirect()->route('admin.posts.show', $post)->with('message', $post->title . ' has been updated succesfully!')->with('alert-class', 'success');
     }
 
     /**
