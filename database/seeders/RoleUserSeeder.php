@@ -19,7 +19,7 @@ class RoleUserSeeder extends Seeder
         $roleIds = Role::all()->pluck('id');
 
         foreach ($users as $user) {
-            $user->roles()->sync($faker->randomElements($roleIds, rand(1, 4)));
+            $user->roles()->sync(array_rand($roleIds->toArray(), rand(1,4)));
         }
 
         $users[0]->roles()->sync(1,2,3);

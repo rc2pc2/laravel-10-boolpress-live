@@ -20,6 +20,7 @@
                         <th scope="col">Category</th>
                         <th scope="col">Date</th>
                         <th scope="col">Content</th>
+                        <th scope="col">Social ids</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -56,6 +57,11 @@
                                 <em>
                                     {{ substr($post->content, 0, 35) }}
                                 </em>
+                            </td>
+                            <td class="fs-6">
+                                @foreach ($post->socialNetworks as $social)
+                                    {{ $social->id }},
+                                @endforeach
                             </td>
                             <td>
                                 <a href="{{ route('admin.posts.show', $post) }}" class="text-decoration-none">
