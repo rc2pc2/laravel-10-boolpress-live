@@ -103,7 +103,7 @@ class PostController extends Controller
 
         $post->update($data);
 
-        return redirect()->route('admin.posts.show', $post);
+        return redirect()->route('admin.posts.show', $post)->with('message', $post->title . ' has been updated succesfully!')->with('alert-class', 'success');;
     }
 
     /**
@@ -112,7 +112,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('message', $post->title . ' has been deleted succesfully!')->with('alert-class', 'danger');
     }
 
     public function deletedIndex(){

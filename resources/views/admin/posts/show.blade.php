@@ -11,6 +11,10 @@
             </h2>
         </div>
 
+
+        @include('partials.session-message')
+
+
         {{-- @dump($post->tags) --}}
         {{-- @dump($post->tags()->attach([1,2,3])) --}}
 
