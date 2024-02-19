@@ -12,7 +12,7 @@
 
             {{-- @dump($tags->pluck('name')) --}}
 
-            <form action="@yield('form-action')" method="POST">
+            <form action="@yield('form-action')" method="POST" enctype="multipart/form-data">
                 @csrf
                 @yield('form-method')
 
@@ -53,8 +53,8 @@
                 </div>
 
                 <div class="mb-3 input-group">
-                    <label for="post_image" class="input-group-text">Post image url:</label>
-                    <input class="form-control" type="text" name="post_image" id="post_image" value="{{ old('post_image', $post->post_image)}}">
+                    <label for="post_image" class="input-group-text">Upload a post image</label>
+                    <input class="form-control" type="file" name="post_image" id="post_image" value="{{ old('post_image', $post->post_image)}}">
                 </div>
                 <div class="mb-3 input-group">
                     <img src="" alt="Image preview" class="d-none img-fluid" id="image-preview">

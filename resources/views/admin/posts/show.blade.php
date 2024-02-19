@@ -33,7 +33,11 @@
                 @endforelse
             </ul>
 
-            <img src="{{ $post->post_image }}" alt="">
+            @if ( str_starts_with($post->post_image, 'http'))
+                <img src="{{ $post->post_image }}" alt="">
+            @else
+                <img src="{{ asset('storage') . '/' . $post->post_image }}" alt="">
+            @endif
 
             {{-- @dump($post->user) --}}
 

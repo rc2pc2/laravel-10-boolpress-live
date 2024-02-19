@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -15,7 +16,7 @@ class PostController extends Controller
         'title' => ['required', 'min:3', 'string', 'max:255'],
         'category_id' => ['exists:categories,id'],
         'tags' => ['exists:tags,id'],
-        'post_image' => ['url:https', 'required'],
+        'post_image' => ['image', 'required'],
         'content' => ['min:20', 'required'],
         'date' => ['date', 'required'],
     ];
@@ -47,13 +48,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all()['tags']);
+        // dd($request->all());
         $data = $request->validate($this->rules);
         $data['user_id'] = Auth::id();
 
         if (!isset($data['tags'])){
             $data['tags'] = [];
         }
+
+        $imageSrc = Storage::put('uploads/posts', $data['post_image']);
+        $data['post_image'] = $imageSrc;
 
         $post = Post::create($data);
         $post->tags()->sync($data['tags']);
@@ -92,6 +96,10 @@ class PostController extends Controller
         if (!isset($data['tags'])){
             $data['tags'] = [];
         }
+
+        $imageSrc = Storage::put('uploads/posts', $data['post_image']);
+        $data['post_image'] = $imageSrc;
+
 
         $post->update($data);
 
