@@ -50,9 +50,14 @@ class PostController extends Controller
         // dd($request->all()['tags']);
         $data = $request->validate($this->rules);
         $data['user_id'] = Auth::id();
-        $post = Post::create($data);
 
+        if (!isset($data['tags'])){
+            $data['tags'] = [];
+        }
+
+        $post = Post::create($data);
         $post->tags()->sync($data['tags']);
+
 
         return redirect()->route('admin.posts.show', $post);
     }
@@ -80,10 +85,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        dd($request->all());
         $data = $request->validate($this->rules);
         // $post->user_id = Auth::id();
         $data['user_id'] = Auth::id();
 
+        if (!isset($data['tags'])){
+            $data['tags'] = [];
+        }
 
         $post->update($data);
 
