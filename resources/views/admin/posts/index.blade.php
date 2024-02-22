@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12 p-2 mb-3 text-center">
             <h2>
-                These are all our available posts, {{ Auth::user()->name }}!
+                Welcome {{ Auth::user()->name }}! This page shows only {{ $posts->count() }} of {{ $posts->total() }} posts.
             </h2>
         </div>
 
@@ -123,6 +123,9 @@
 
                 </tbody>
             </table>
+        </div>
+        <div class="col-12">
+            {{ $posts->links() }}
         </div>
     </div>
 </div>
