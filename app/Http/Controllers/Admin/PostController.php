@@ -24,10 +24,18 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // $posts = Post::where('user_id', Auth::id())->orderBy('date')->get();
-        $posts = Post::orderBy('date', 'DESC')->paginate(10);
+        $data = $request->all();
+        if( isset($data['search'])){
+            $posts = Post::where('title', 'LIKE', "%{$data['search']}%")->paginate(50);
+        } else {
+            $posts = Post::orderBy('date', 'DESC')->paginate(10);
+        }
+
+
+
         return view('admin.posts.index', compact('posts'));
     }
 

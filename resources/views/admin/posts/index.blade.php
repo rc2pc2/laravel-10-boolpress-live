@@ -6,9 +6,17 @@
 <div class="container">
     <div class="row">
         <div class="col-12 p-2 mb-3 text-center">
-            <h2>
-                Welcome {{ Auth::user()->name }}! This page shows only {{ $posts->count() }} of {{ $posts->total() }} posts.
-            </h2>
+            <h1 class="mb-3">
+                Welcome {{ Auth::user()->name }}! This page shows {{ $posts->count() }} of {{ $posts->total() }} posts.
+            </h1>
+
+            <div class="col-12">
+                <form class="form-floating mb-3 p-0 d-flex">
+                    <input type="text" class="form-control" id="floatingInput" name="search">
+                    <label for="floatingInput">Search a post by title</label>
+                    <button type="submit" class="d-inline-block w-25 btn btn-xl btn-primary fs-3">search</button>
+                </form>
+            </div>
         </div>
 
         @include('partials.session-message')
